@@ -18,8 +18,12 @@
     </a>
     <nav class="nav">
       <ul class="nav__list">
-        <li class="nav__item"><a class="nav__link" href="/">Графики</a></li>
-        <li class="nav__item"><a class="nav__link" href="#">Таблицы</a></li>
+        <li class="nav__item">
+          <router-link to="/" class="nav__link">Графики</router-link>
+        </li>
+        <li class="nav__item">
+          <router-link to="/table" class="nav__link">Таблицы</router-link>
+        </li>
       </ul>
     </nav>
   </header>
@@ -32,8 +36,8 @@
   align-items: center;
   position: relative;
   padding: 20px;
-  --basic-color: #5bb0e5;
-  --secondary-color: #2e8398;
+  --basic-color: #2aabfa;
+  --secondary-color: #1e8aa5;
 }
 
 .header::before {
@@ -85,7 +89,7 @@
   margin-left: 3px;
 }
 
-.nav a {
+.nav__item * {
   text-decoration: none;
   color: #ffffff;
   font-size: 1.1rem;
@@ -97,11 +101,12 @@
   border-radius: 5px;
 }
 
-.nav a:hover {
+.nav__item *:hover {
   background-color: var(--basic-color);
 }
 
-.nav a:active {
+.nav__item *:active {
   text-decoration: underline;
+  opacity: 0.6;
 }
 </style>

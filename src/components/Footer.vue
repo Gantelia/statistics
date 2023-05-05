@@ -8,7 +8,7 @@
   padding: 20px;
   position: relative;
   text-align: center;
-  color: #2e8398;
+  color: #1e8aa5;
 }
 
 .footer::before {
@@ -18,6 +18,6 @@
   height: 1px;
   top: 0;
   right: 0px;
-  background-color: #2e8398;
+  background-color: currentColor;
 }
 </style>
