@@ -9,4 +9,4 @@ type CategoryData = {
   data: ChartPoint[]
 }
 
-type ChartPoint = [number, number]
+type ChartPoint = number[]
