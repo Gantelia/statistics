@@ -3,6 +3,7 @@
     <Header></Header>
     <main class="main">
       <RouterView v-if="hasData"></RouterView>
+      <p class="loader" v-else-if="isLoading">Загрузка...</p>
       <p class="no-data" v-else>Нет данных для отображения</p>
     </main>
     <Footer></Footer>
@@ -10,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent, onMounted } from 'vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import { useStatsStore } from './stores/stats-store'
@@ -19,9 +20,14 @@ export default defineComponent({
   components: { Header, Footer },
   setup() {
     const store = useStatsStore()
-    const hasData = store.hasData
 
-    return { hasData }
+    onMounted(() => {
+      store.fetchStats()
+    })
+
+    const isLoading = computed(() => store.isLoading)
+    const hasData = computed(() => store.hasData)
+    return { hasData, isLoading }
   }
 })
 </script>
@@ -48,5 +54,11 @@ export default defineComponent({
 .no-data {
   font-size: 1.2rem;
   text-align: center;
+}
+
+.loader {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 </style>

@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { Chart } from 'highcharts-vue'
 import { useStatsStore } from '@/stores/stats-store'
 
@@ -13,12 +13,12 @@ export default defineComponent({
   },
   setup() {
     const store = useStatsStore()
-    const series = store.getChartSeries
-    const categoryTitles = store.getCategoryTitles
+    const series = computed(() => store.getChartSeries)
+    const categoryTitles = computed(() => store.getCategoryTitles)
 
     const chartOptions = {
       title: {
-        text: `Статистика для ${categoryTitles.join(', ')}`
+        text: `Статистика для ${categoryTitles.value.join(', ')}`
       },
       xAxis: {
         type: 'datetime'
@@ -28,7 +28,7 @@ export default defineComponent({
           text: 'проценты %'
         }
       },
-      series: series,
+      series: series.value,
       accessibility: { enabled: false }
     }
 

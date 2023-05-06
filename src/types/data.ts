@@ -3,6 +3,10 @@ export type TableRowData = {
   values: number[]
 }
 
+export type Store = Stats & {
+  isLoading: boolean
+}
+
 export type Stats = {
   hasData: boolean
   data: CategoryData[]
