@@ -1,12 +1,17 @@
-export type Store = {
+export type TableRowData = {
+  date: string
+  values: number[]
+}
+
+export type Stats = {
   hasData: boolean
   data: CategoryData[]
 }
 
-type CategoryData = {
+export type CategoryData = {
   id: number
   name: string
-  data: ChartPoint[]
+  data: Point[]
 }
 
-type ChartPoint = number[]
+type Point = [number, number]

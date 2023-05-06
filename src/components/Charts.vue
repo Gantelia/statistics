@@ -13,12 +13,12 @@ export default defineComponent({
   },
   setup() {
     const store = useStatsStore()
-    const series = store.getSeries
+    const series = store.getChartSeries
     const categoryTitles = store.getCategoryTitles
 
     const chartOptions = {
       title: {
-        text: `Статистика для ${categoryTitles}`
+        text: `Статистика для ${categoryTitles.join(', ')}`
       },
       xAxis: {
         type: 'datetime'
