@@ -2,7 +2,8 @@
   <div class="wrapper">
     <Header></Header>
     <main class="main">
-      <RouterView></RouterView>
+      <RouterView v-if="hasData"></RouterView>
+      <p class="no-data" v-else>Нет данных для отображения</p>
     </main>
     <Footer></Footer>
   </div>
@@ -12,9 +13,16 @@
 import { defineComponent } from 'vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+import { useStatsStore } from './stores/stats-store'
 
 export default defineComponent({
-  components: { Header, Footer }
+  components: { Header, Footer },
+  setup() {
+    const store = useStatsStore()
+    const hasData = store.hasData
+
+    return { hasData }
+  }
 })
 </script>
 
@@ -31,5 +39,10 @@ export default defineComponent({
 .main {
   flex-grow: 1;
   padding: 30px;
+}
+
+.no-data {
+  font-size: 1.2rem;
+  text-align: center;
 }
 </style>
