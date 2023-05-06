@@ -39,6 +39,10 @@ export default defineComponent({
 .main {
   flex-grow: 1;
   padding: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .no-data {

@@ -9,6 +9,8 @@ export const useStatsStore = defineStore('statsStore', {
   }),
   getters: {
     getHasData: (state) => state.hasData,
-    getData: (state) => state.data
+    getCategoryTitles: (state) => state.data.map((category) => category.name).join(', '),
+    getSeries: (state) =>
+      state.data.map((category) => ({ name: category.name, data: category.data }))
   }
 })

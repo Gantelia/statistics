@@ -13,13 +13,23 @@ export default defineComponent({
   },
   setup() {
     const store = useStatsStore()
+    const series = store.getSeries
+    const categoryTitles = store.getCategoryTitles
 
     const chartOptions = {
-      series: [
-        {
-          data: [1, 2, 3]
+      title: {
+        text: `Статистика для ${categoryTitles}`
+      },
+      xAxis: {
+        type: 'datetime'
+      },
+      yAxis: {
+        title: {
+          text: 'проценты %'
         }
-      ]
+      },
+      series: series,
+      accessibility: { enabled: false }
     }
 
     return { chartOptions }
