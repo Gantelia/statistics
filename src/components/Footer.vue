@@ -2,7 +2,7 @@
   <footer class="footer">© Gantelia 2023</footer>
 </template>
 
-<style>
+<style scoped>
 .footer {
   min-height: 50px;
   padding: 20px;
