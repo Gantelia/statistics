@@ -28,7 +28,7 @@ export default defineComponent({
 
 <style>
 .wrapper {
-  height: 100%;
+  min-height: 100%;
   max-width: 800px;
   margin-inline: auto;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.15);

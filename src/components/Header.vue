@@ -35,7 +35,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding: 20px;
+  padding: 20px 30px;
   --basic-color: #2aabfa;
   --secondary-color: #1e8aa5;
 }
@@ -106,7 +106,10 @@
 }
 
 .nav__item *:active {
-  text-decoration: underline;
   opacity: 0.6;
+}
+
+.router-link-exact-active {
+  text-decoration: underline;
 }
 </style>

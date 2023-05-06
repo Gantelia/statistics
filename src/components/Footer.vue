@@ -5,7 +5,7 @@
 <style scoped>
 .footer {
   min-height: 50px;
-  padding: 20px;
+  padding: 20px 30px;
   position: relative;
   text-align: center;
   color: #1e8aa5;
