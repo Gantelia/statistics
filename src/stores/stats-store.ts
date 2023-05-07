@@ -12,7 +12,7 @@ export const useStatsStore = defineStore('statsStore', {
   }),
   getters: {
     getHasData: (state) => state.hasData,
-    getCategoryTitles: (state) => state.data.map((category) => category.name.replace('%""', '% ')),
+    getCategoryTitles: (state) => state.data.map((category) => category.name),
     getChartSeries: (state) =>
       state.data.map((category) => ({ name: category.name, data: category.data })),
     getTableData: (state) => convertData(state.data)
