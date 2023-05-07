@@ -1,6 +1,11 @@
 <template>
   <div>
     <table class="table">
+      <caption class="table__caption">
+        {{
+          caption
+        }}
+      </caption>
       <thead>
         <tr>
           <th>Дата</th>
@@ -18,18 +23,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { useStatsStore } from '@/stores/stats-store'
 
 export default defineComponent({
   setup() {
     const store = useStatsStore()
-    const categoryTitles = store.getCategoryTitles
-    const tableData = store.getTableData
+    const categoryTitles = computed(() => store.getCategoryTitles)
+    const tableData = computed(() => store.getTableData)
+    const caption = computed(() => `Статистика для ${categoryTitles.value.join(', ')}`)
 
     return {
       categoryTitles,
-      tableData
+      tableData,
+      caption
     }
   }
 })
@@ -42,10 +49,18 @@ export default defineComponent({
   --column-color: #85bf94;
   --row-color: #ecf3e6;
 }
+
+.table__caption {
+  font-size: 1.1rem;
+  padding: 0.3em;
+  margin-bottom: 0.625em;
+  font-weight: 700;
+}
 .table th {
   padding: 0.8em;
   background-color: var(--column-color);
-  border: 1px solid #7c6359;
+  border: 1px solid #9d7160;
+  font-weight: normal;
 }
 
 .table th:first-child {
