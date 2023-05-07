@@ -9,13 +9,13 @@
       <thead>
         <tr>
           <th>Дата</th>
-          <th v-for="title in categoryTitles">{{ title }}</th>
+          <th v-for="title in categoryTitles" v-bind:key="title">{{ title }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="rowData in tableData">
+        <tr v-for="rowData in tableData" v-bind:key="rowData.date">
           <td>{{ rowData.date }}</td>
-          <td v-for="value in rowData.values">{{ value }}</td>
+          <td v-for="value in rowData.values" v-bind:key="value">{{ value }}</td>
         </tr>
       </tbody>
     </table>

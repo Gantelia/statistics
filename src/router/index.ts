@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Charts from '../components/Charts.vue'
-import Table from '../components/Table.vue'
+import ChartPage from '../components/ChartPage.vue'
+import TablePage from '../components/TablePage.vue'
 import NotFound from '../components/NotFound.vue'
 
 const routes = [
-  { name: 'Charts', path: '/', component: Charts },
-  { name: 'Table', path: '/table', component: Table },
+  { name: 'Chart', path: '/', component: ChartPage },
+  { name: 'Table', path: '/table', component: TablePage },
   { name: 'NotFound', path: '/:pathMatch(.*)*', component: NotFound }
 ]
 

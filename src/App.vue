@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Header></Header>
+    <PageHeader></PageHeader>
     <main class="main">
       <RouterView v-if="hasData"></RouterView>
       <p class="loader" v-else-if="isLoading">Загрузка...</p>
@@ -9,18 +9,18 @@
       </p>
       <p class="no-data" v-else>Нет данных для отображения</p>
     </main>
-    <Footer></Footer>
+    <PageFooter></PageFooter>
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, onMounted } from 'vue'
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import PageHeader from './components/PageHeader.vue'
+import PageFooter from './components/PageFooter.vue'
 import { useStatsStore } from './stores/stats-store'
 
 export default defineComponent({
-  components: { Header, Footer },
+  components: { PageHeader, PageFooter },
   setup() {
     const store = useStatsStore()
 
