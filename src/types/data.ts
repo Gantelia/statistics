@@ -5,6 +5,7 @@ export type TableRowData = {
 
 export type Store = Stats & {
   isLoading: boolean
+  isError: boolean
 }
 
 export type Stats = {

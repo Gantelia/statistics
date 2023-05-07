@@ -4,6 +4,9 @@
     <main class="main">
       <RouterView v-if="hasData"></RouterView>
       <p class="loader" v-else-if="isLoading">Загрузка...</p>
+      <p class="error" v-else-if="isError">
+        Что-то пошло не так...<br />Попробуйте перезагрузить страницу или повторите попытку позже
+      </p>
       <p class="no-data" v-else>Нет данных для отображения</p>
     </main>
     <Footer></Footer>
@@ -25,9 +28,10 @@ export default defineComponent({
       store.fetchStats()
     })
 
-    const isLoading = computed(() => store.isLoading)
     const hasData = computed(() => store.hasData)
-    return { hasData, isLoading }
+    const isLoading = computed(() => store.isLoading)
+    const isError = computed(() => store.isError)
+    return { hasData, isLoading, isError }
   }
 })
 </script>
@@ -51,14 +55,20 @@ export default defineComponent({
   justify-content: center;
 }
 
-.no-data {
-  font-size: 1.2rem;
-  text-align: center;
-}
-
 .loader {
   text-align: center;
   font-size: 1.2rem;
   font-weight: 500;
+}
+
+.error {
+  text-align: center;
+  font-size: 1rem;
+  color: #ed3939;
+}
+
+.no-data {
+  font-size: 1.2rem;
+  text-align: center;
 }
 </style>

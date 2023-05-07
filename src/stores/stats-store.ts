@@ -1,14 +1,14 @@
 import { defineStore } from 'pinia'
 import type { Store } from '../types/data'
 import { convertData } from './utils'
-
-const BACKEND_URL = 'https://elcodis.com/'
+import { ERROR_TIMEOUT } from '@/const'
 
 export const useStatsStore = defineStore('statsStore', {
   state: (): Store => ({
     hasData: false,
     data: [],
-    isLoading: false
+    isLoading: false,
+    isError: false
   }),
   getters: {
     getHasData: (state) => state.hasData,
@@ -21,12 +21,13 @@ export const useStatsStore = defineStore('statsStore', {
     async fetchStats() {
       this.isLoading = true
       try {
-        const response: any = await fetch(`${BACKEND_URL}test_task_mock.json`)
+        const response: any = await fetch('https://elcodis.com/test_task_mock.json')
         const { has_data, data } = await response.json()
         this.hasData = has_data
         this.data = data
       } catch (error) {
-        throw new Error(`error`)
+        this.isError = true
+        setTimeout(() => (this.isError = false), ERROR_TIMEOUT)
       } finally {
         this.isLoading = false
       }
