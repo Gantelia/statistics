@@ -17,3 +17,9 @@ export function convertData(data: CategoryData[]): TableRowData[] {
 
   return convertedData
 }
+
+export default function checkStatus(response: Response) {
+  if (!response.ok) {
+    throw new Error(`${response.status}: ${response.statusText}`)
+  }
+}

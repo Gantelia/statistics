@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import type { Store } from '../types/data'
-import { convertData } from './utils'
+import checkStatus, { convertData } from './utils'
 import { ERROR_TIMEOUT } from '@/const'
 
 export const useStatsStore = defineStore('statsStore', {
@@ -22,6 +22,7 @@ export const useStatsStore = defineStore('statsStore', {
       this.isLoading = true
       try {
         const response: any = await fetch('https://elcodis.com/test_task_mock.json')
+        checkStatus(response)
         const { has_data, data } = await response.json()
         this.hasData = has_data
         this.data = data
